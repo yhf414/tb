@@ -1,0 +1,39 @@
+
+<head>
+<script src="http://www.haozhebao.com/template/default/inc/js/clipboard.min.js"></script>
+</head>
+<body>
+<h2>共有商品数目：{{.total}}</h2>
+{{range .goods}}
+<div class="good">
+<h3>{{.Order}}.</h3>
+----------------------------------------
+<br>
+<div>
+	<img src={{.Img}} style="height:200px;">
+	<br>
+	{{.Title}}
+</div>
+<div style="width:1px;height:1px;overflow:hidden">
+	<img style="width:290px;height:290px;" src="{{.Img}}">
+</div>
+<button class="copyBtn">复制图片</button>
+<div style="width:1px;height:1px;overflow:hidden;float:left;">
+{{.Title}}
+<br>
+{{.Price}}{{.Remark}}
+<br>复制这条信息，打开→手机淘宝→即可看到
+<br>{{.Cmd2}}{{.Cmd1}}
+</div>
+<button class="copyBtn">复制文案</button>
+<a href={{.Url}} target="_black">查看详情</a>
+</div>
+{{end}}
+<script>
+		new Clipboard('.copyBtn', {
+			target: function(e) {
+				return e.previousElementSibling;
+			}
+		});
+</script>
+</body>
